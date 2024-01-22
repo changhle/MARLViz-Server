@@ -92,21 +92,21 @@ def preprocess():
 
     snake_list = []
     # student_list = []
-    with open(data_path, "r", encoding='UTF-8') as read_file:
-        record_list = csv.reader(read_file)
-        next(record_list)
-        for row in record_list:
-            snake = {
-                'index': int(row[0]),
-                'blue_action': float(row[1]),
-                'green_action': float(row[2]),
-                'white_action': float(row[3]),
-                'blue_status': float(row[4]),
-                'green_status': float(row[5]),
-                'white_status': float(row[6])
-            }
+    # with open(data_path, "r", encoding='UTF-8') as read_file:
+    #     record_list = csv.reader(read_file)
+    #     next(record_list)
+    #     for row in record_list:
+    #         snake = {
+    #             'index': int(row[0]),
+    #             'blue_action': float(row[1]),
+    #             'green_action': float(row[2]),
+    #             'white_action': float(row[3]),
+    #             'blue_status': float(row[4]),
+    #             'green_status': float(row[5]),
+    #             'white_status': float(row[6])
+    #         }
 
-            snake_list.append(snake)
+    #         snake_list.append(snake)
 
         # record_list = json.load(read_file)
         # for row in record_list:
