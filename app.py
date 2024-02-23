@@ -40,13 +40,16 @@ async def disconnect(sid):
     print('disconnect', '(sid : ' + sid + ')')
 
 
-@sio.on('user')
-async def send_user_info(sid):
-    packet = {
-        'snake_list': dp.snake_list
-    }
-    await sio.emit('user', packet, room=sid)
+# @sio.on('user')
+# async def send_user_info(sid):
+#     packet = {
+#         'snake_list': dp.snake_list
+#     }
+#     await sio.emit('user', packet, room=sid)
 
+@sio.on('similarity')
+async def send_game_data(sid):
+    await sio.emit('similarity', dp.game_list, room=sid)
 
 @sio.on('user_workout_matrix')
 async def send_user_workout_matrix(sid, data):

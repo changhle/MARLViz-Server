@@ -9,15 +9,17 @@ pp = pprint.PrettyPrinter(indent=4, depth=10)
 dirname = os.path.dirname
 SITE_ROOT = os.path.realpath(dirname(dirname(__file__)))
 DATA_ROOT = os.path.join(SITE_ROOT, 'data')
-TARGET_ROOT = os.path.join(DATA_ROOT, 'target')
+RESULT_ROOT = os.path.join(DATA_ROOT, 'result')
+# TARGET_ROOT = os.path.join(DATA_ROOT, 'target')
 
 # data_path = os.path.join(TARGET_ROOT, '230217.json')
-data_path = os.path.join(TARGET_ROOT, 'episode_3.csv')
+data_path = os.path.join(RESULT_ROOT, 'agent_umap_result_4.json')
 
-record_list = []
-record_dict = {}
+game_list = []
+# record_list = []
+# record_dict = {}
 
-snake_list = []
+# snake_list = []
 # student_list = []
 # user_id_list = []
 # equip_list = []
@@ -85,28 +87,33 @@ snake_list = []
 
 
 def preprocess():
-
-    global record_list, record_dict
-    global snake_list
+    global game_list
+    # global record_list, record_dict
+    # global snake_list
     # global student_list
 
-    snake_list = []
-    # student_list = []
+    game_list = []
     with open(data_path, "r", encoding='UTF-8') as read_file:
-        record_list = csv.reader(read_file)
-        next(record_list)
-        for row in record_list:
-            snake = {
-                'index': int(row[0]),
-                'blue_action': float(row[1]),
-                'green_action': float(row[2]),
-                'white_action': float(row[3]),
-                'blue_status': float(row[4]),
-                'green_status': float(row[5]),
-                'white_status': float(row[6])
-            }
+        data_list = json.load(read_file)
+        for data in data_list:
+            game_list.append(data)
+    # snake_list = []
+    # student_list = []
+    # with open(data_path, "r", encoding='UTF-8') as read_file:
+    #     record_list = csv.reader(read_file)
+    #     next(record_list)
+    #     for row in record_list:
+    #         snake = {
+    #             'index': int(row[0]),
+    #             'blue_action': float(row[1]),
+    #             'green_action': float(row[2]),
+    #             'white_action': float(row[3]),
+    #             'blue_status': float(row[4]),
+    #             'green_status': float(row[5]),
+    #             'white_status': float(row[6])
+    #         }
 
-            snake_list.append(snake)
+    #         snake_list.append(snake)
 
         # record_list = json.load(read_file)
         # for row in record_list:
